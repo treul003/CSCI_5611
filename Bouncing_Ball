@@ -1,12 +1,15 @@
 float dimension=1000;
 float r=random(30,100);
+
 float positiony=random(dimension/2,dimension-r), positionx=random(r,dimension-r), positionz=random(r,dimension-r);
 float velocityy=random(60,80); 
 float velocityx=random(60,80)*pow(-1,round(random(1))); 
 float velocityz=random(60,80)*pow(-1,round(random(1)));
+
 float startTime;
 float elapsedTime;
 float acceleration=100;
+
 void setup(){
   size(1000,1000,P3D);
   startTime=millis();
@@ -70,17 +73,20 @@ void draw(){
 
   noStroke();
   lights();
+  
   pushMatrix();
   fill(255,159,159);
   translate(positionx,positiony,positionz);
   sphere(r);
   popMatrix();
+  
   pushMatrix();
   stroke(0);
   translate(dimension/2,dimension/2,dimension/2);
   fill(255,255,255,125);
   box(dimension+5);
   popMatrix();
+  
   float camX=map(mouseX,0,width,-dimension-width,dimension+width);
   float camY=map(mouseY,0,height,-height,dimension+height);
   camera(camX,camY,100*value+(height/2)/(tan(PI/6))*3,dimension/2,dimension/2,0,0,1,0);
